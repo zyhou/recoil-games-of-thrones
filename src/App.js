@@ -5,7 +5,7 @@ import "./tailwind.output.css";
 import logo from "./images/logo.svg";
 import arrowBottom from "./images/arrow-bottom.svg";
 
-const apiUrl = `https://api.got.show//api/show/characters`;
+const apiUrl = `https://api.got.show/api/show/characters`;
 
 const currentCharacterIndexState = atom({
   key: "CurrentCharactersIndex",
