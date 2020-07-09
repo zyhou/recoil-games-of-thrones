@@ -1,0 +1,9 @@
+@tailwind base;
+
+html,
+body {
+  @apply bg-black h-full;
+}
+
+@tailwind components;
+@tailwind utilities;
