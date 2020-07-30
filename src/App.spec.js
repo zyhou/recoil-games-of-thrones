@@ -78,4 +78,26 @@ describe("<App />", () => {
       })
     ).toHaveAttribute("src", "https://sansa-images.com");
   });
+
+  it("should display first character when user click twice on next button", async () => {
+    render(<CharacterDetail />, {
+      wrapper: AppProvider,
+    });
+
+    await waitFor(() => {
+      screen.getByRole("heading");
+    });
+
+    const input = screen.getByRole("button");
+    fireEvent.click(input);
+
+    await waitFor(() => {
+      screen.getByRole("heading");
+    });
+
+    const inputTwice = screen.getByRole("button");
+    fireEvent.click(inputTwice);
+
+    expect(screen.getByRole("heading")).toHaveTextContent("Eddard Star");
+  });
 });
