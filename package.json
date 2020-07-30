@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/jest-dom": "^5.11.2",
+    "@testing-library/react": "^10.4.7",
+    "@testing-library/user-event": "^12.0.17",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "recoil": "^0.0.10",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.6.0"
   },
   "scripts": {
     "build:tailwind": "tailwindcss build src/tailwind.css  -c ./tailwind.config.js -o src/tailwind.output.css",
@@ -37,7 +37,7 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.4",
+    "autoprefixer": "^9.8.5",
     "postcss-cli": "^7.1.1"
   }
 }
