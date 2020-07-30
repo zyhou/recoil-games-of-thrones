@@ -4,4 +4,4 @@
 
 [Demo](https://recoil-game-of-thrones.netlify.app/)
 
-![Presentation Games Of Thrones](./github/presentation.gif)
+![Presentation Games Of Thrones](https://github.com/zyhou/recoil-games-of-thrones/blob/master/.github/presentation.gif?raw=true)
