@@ -1,5 +1,5 @@
 import React from "react";
-import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
+import { atom, selector, useSetRecoilState, useRecoilValue } from "recoil";
 import "./tailwind.output.css";
 
 import logo from "./images/logo.svg";
@@ -24,30 +24,37 @@ const characterListQuery = selector({
   },
 });
 
-const charactersLengthQuery = selector({
-  key: "filteredNamesState",
-  get: ({ get }) => get(characterListQuery).length,
-});
-
-const currentCharacterInfoQuery = selector({
-  key: "CurrentCharacterInfoQuery",
+const currentCharacterInfoSate = selector({
+  key: "CurrentCharacterInfoSate",
   get: ({ get }) => get(characterListQuery)[get(currentCharacterIndexState)],
 });
 
+export const loopArrayIndex = (length, current) => {
+  const currentIndex = current + 1;
+  return currentIndex < length ? currentIndex : 0;
+};
+
+// Return to start at the end
+const characterIndexState = selector({
+  key: "CharacterIndexState",
+  get: ({ get }) => get(currentCharacterIndexState),
+  set: ({ get, set }) => {
+    return set(
+      currentCharacterIndexState,
+      loopArrayIndex(
+        get(characterListQuery).length,
+        get(currentCharacterIndexState)
+      )
+    );
+  },
+});
+
 export const CharacterDetail = () => {
-  const currentCharacter = useRecoilValue(currentCharacterInfoQuery);
-  const charactersLength = useRecoilValue(charactersLengthQuery);
-  const [currentCharactersIndex, setCurrentCharactersIndex] = useRecoilState(
-    currentCharacterIndexState
-  );
+  const currentCharacter = useRecoilValue(currentCharacterInfoSate);
+  const setCurrentCharactersIndex = useSetRecoilState(characterIndexState);
 
   const onNextCharacter = () => {
-    // Return to start at the end
-    const currentIndex = currentCharactersIndex + 1;
-    const nextCharacterIndex =
-      currentIndex < charactersLength ? currentIndex : 0;
-
-    setCurrentCharactersIndex(nextCharacterIndex);
+    setCurrentCharactersIndex();
   };
 
   return (
