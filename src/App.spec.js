@@ -79,24 +79,34 @@ describe("<App />", () => {
     ).toHaveAttribute("src", "https://sansa-images.com");
   });
 
-  it.skip("should display first character when user click twice on next button", async () => {
+  it("should display first character when user click twice on next button", async () => {
     render(<CharacterDetail />, {
       wrapper: AppProvider,
     });
 
     await waitFor(() => {
-      screen.getByRole("heading");
+      screen.getByRole("heading", {
+        name: /eddard stark/i,
+      });
     });
 
     const input = screen.getByRole("button");
     fireEvent.click(input);
 
     await waitFor(() => {
-      screen.getByRole("heading");
+      screen.getByRole("heading", {
+        name: /sansa stark/i,
+      });
     });
 
     const inputTwice = screen.getByRole("button");
     fireEvent.click(inputTwice);
+
+    await waitFor(() => {
+      screen.getByRole("heading", {
+        name: /eddard stark/i,
+      });
+    });
 
     expect(screen.getByRole("heading")).toHaveTextContent("Eddard Star");
   });

@@ -24,6 +24,11 @@ const characterListQuery = selector({
   },
 });
 
+const charactersLengthQuery = selector({
+  key: "filteredNamesState",
+  get: ({ get }) => get(characterListQuery).length,
+});
+
 const currentCharacterInfoQuery = selector({
   key: "CurrentCharacterInfoQuery",
   get: ({ get }) => get(characterListQuery)[get(currentCharacterIndexState)],
@@ -31,13 +36,17 @@ const currentCharacterInfoQuery = selector({
 
 export const CharacterDetail = () => {
   const currentCharacter = useRecoilValue(currentCharacterInfoQuery);
+  const charactersLength = useRecoilValue(charactersLengthQuery);
   const [currentCharactersIndex, setCurrentCharactersIndex] = useRecoilState(
     currentCharacterIndexState
   );
 
   const onNextCharacter = () => {
-    // todo: improve next item (selector/selectorFamily?)
-    let nextCharacterIndex = currentCharactersIndex + 1;
+    // Return to start at the end
+    const currentIndex = currentCharactersIndex + 1;
+    const nextCharacterIndex =
+      currentIndex < charactersLength ? currentIndex : 0;
+
     setCurrentCharactersIndex(nextCharacterIndex);
   };
 
