@@ -29,7 +29,7 @@ const currentCharacterInfoQuery = selector({
   get: ({ get }) => get(characterListQuery)[get(currentCharacterIndexState)],
 });
 
-const CharacterDetail = () => {
+export const CharacterDetail = () => {
   const currentCharacter = useRecoilValue(currentCharacterInfoQuery);
   const [currentCharactersIndex, setCurrentCharactersIndex] = useRecoilState(
     currentCharacterIndexState
@@ -48,9 +48,16 @@ const CharacterDetail = () => {
           <h1 className="font-bold text-4xl">{currentCharacter.name}</h1>
           <div>
             <ul>
-              <li>Actor: {currentCharacter.actor}</li>
-              <li>House: {currentCharacter.house}</li>
-              <li>Status: {currentCharacter.alive ? "Alive" : "Dead"}</li>
+              <li>
+                <strong>Actor:</strong> {currentCharacter.actor}
+              </li>
+              <li>
+                <strong>House:</strong> {currentCharacter.house}
+              </li>
+              <li>
+                <strong>Status:</strong>
+                {currentCharacter.alive ? "Alive" : "Dead"}
+              </li>
             </ul>
           </div>
         </section>
