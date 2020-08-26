@@ -65,7 +65,7 @@ describe("App", () => {
         screen.getByRole("img", {
           name: /eddard stark/i,
         })
-      ).toHaveAttribute("src", "https://eddard-images.com");
+      ).toHaveAttribute("src", "/tests/Eddard_Stark.jpg");
     });
 
     it("should display next character when user click on next button", async () => {
@@ -93,7 +93,7 @@ describe("App", () => {
         screen.getByRole("img", {
           name: /sansa stark/i,
         })
-      ).toHaveAttribute("src", "https://sansa-images.com");
+      ).toHaveAttribute("src", "/tests/Catelyn.jpg");
     });
 
     it("should display first character when user click twice on next button", async () => {
