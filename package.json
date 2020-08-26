@@ -23,7 +23,7 @@
     "cypress": "cypress open",
     "cypress:headless": "cypress run --browser chrome --headless",
     "test:e2e": "start-server-and-test 'PORT=5000 yarn start' 5000 'yarn cypress'",
-    "test:e2e:ci": "CI=true yarn build && start-server-and-test 'yarn serve' 5000 'yarn cypress:headless'",
+    "test:e2e:ci": "REACT_APP_CI=true CI=true yarn build && start-server-and-test 'yarn serve' 5000 'yarn cypress:headless'",
     "serve": "serve -s build",
     "eject": "react-scripts eject"
   },
