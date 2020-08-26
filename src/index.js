@@ -4,7 +4,7 @@ import { RecoilRoot } from "recoil";
 
 import App from "./App";
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "test" || process.env.CI) {
   const { worker } = require("./mocks/browser");
   worker.start();
 }
