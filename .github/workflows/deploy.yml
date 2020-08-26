@@ -24,13 +24,17 @@ jobs:
       - run: yarn build
       - run: yarn test
 
-      - uses: cypress-io/github-action@v2
+      - name: Use Cypress
+        uses: cypress-io/github-action@v2
         with:
           browser: chrome
           headless: true
           build: yarn build:ci
           start: yarn serve
           wait-on: http://localhost:5000
+
+      - uses: actions/setup-node@v1
+      - run: yarn build
 
       - name: Deploy to netlify
         uses: netlify/actions/cli@master
