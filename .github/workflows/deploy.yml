@@ -28,11 +28,9 @@ jobs:
         with:
           browser: chrome
           headless: true
-          build: yarn build
+          build: REACT_APP_CI=true yarn build
           start: yarn serve
           wait-on: http://localhost:5000
-        env:
-          - REACT_APP_CI: true
 
       - name: Deploy to netlify
         uses: netlify/actions/cli@master
