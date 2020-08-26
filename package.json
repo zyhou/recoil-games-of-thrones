@@ -20,7 +20,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "cypress": "cypress open",
-    "cypress:headless": "cypress run --browser chrome --headless",
     "test:e2e": "start-server-and-test 'yarn start' 3000 'yarn cypress'",
     "eject": "react-scripts eject"
   },
