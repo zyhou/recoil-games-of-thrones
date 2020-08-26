@@ -29,7 +29,7 @@ jobs:
           browser: chrome
           headless: true
           build: yarn build
-          start: npx serve -s build
+          start: PORT=3000 npx serve -s build
           wait-on: http://localhost:3000
 
       - name: Deploy to netlify
