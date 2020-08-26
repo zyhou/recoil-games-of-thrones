@@ -21,8 +21,16 @@ jobs:
         with:
           node-version: "14.x"
       - run: yarn --frozen-lockfile
-      - run: yarn build --if-present
+      - run: yarn build
       - run: yarn test
+
+      - uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          headless: true
+          build: yarn build
+          start: npx serve build
+          wait-on: http://localhost:3000
 
       - name: Deploy to netlify
         uses: netlify/actions/cli@master
