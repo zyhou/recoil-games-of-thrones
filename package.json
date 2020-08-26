@@ -19,6 +19,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run --browser chrome --headless",
+    "test:e2e": "start-server-and-test 'yarn start' 3000 'yarn cypress'",
+    "test:e2e:ci": "start-server-and-test 'yarn start' 3000 'yarn cypress:headless'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -37,9 +41,12 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/cypress": "^6.0.1",
     "autoprefixer": "^9.8.6",
+    "cypress": "^5.0.0",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "msw": "^0.20.5",
-    "postcss-cli": "^7.1.1"
+    "postcss-cli": "^7.1.1",
+    "start-server-and-test": "^1.11.3"
   }
 }
