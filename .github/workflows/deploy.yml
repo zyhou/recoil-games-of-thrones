@@ -28,7 +28,7 @@ jobs:
         with:
           browser: chrome
           headless: true
-          build: REACT_APP_CI=true yarn build
+          build: yarn build:ci
           start: yarn serve
           wait-on: http://localhost:5000
 
